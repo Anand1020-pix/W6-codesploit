@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Suraksha </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.1.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.1.0/mapbox-gl.css' rel='stylesheet' />
+
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header navbar-left">
+     <a class="navbar-brand" href=#">
+<img src="logo2.png" alt="logo" style="width:40px;"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href=index.html>Home</a></li>
+      <li><a href=inr.html>Incident Response</a></li>
+      <li><a href="#">Incident history</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log Out </a></li>
+    </ul>
+  </div>
+</nav>
+<div id='map' style='width: 5000px; height: 800px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoidGhlMTAyMCIsImEiOiJja2tzbHRyeG8wcGE1MnZwY3lwOWE1amttIn0.Te4Br6UfIo72Jkd25sc7Dg';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/the1020/ckktewrqo23dp17lb1xj7rg0t'
+});
+map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['palakkad'] // replace this with the name of the layer
+  });
+
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+    .addTo(map);
+});
+</script>
+
+
+</body>
+</html>

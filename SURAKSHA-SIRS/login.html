@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Suraksha - Login</title>
+
+<style>
+html{
+	height: 100%;
+}
+body {
+  background-image: url('bg.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#login{
+	background-color: white;
+	width:500px;
+	height: 400px;
+	border-radius: 20px;
+}
+#lgbutton{
+	background-color: green;
+	width:100px;
+	height: 40px;
+	color: white;
+	font-style: bold;
+	border-radius: 10px;
+}
+#text{
+	width:200px;
+	height: 20px;
+}
+</style>
+<script type="text/javascript">
+	function validate(form){
+	if(form.text.value=="admin" && form.pass.value=="pswd"){
+		window.open("index.html")
+	}
+	else
+	{
+		alert("Incorret Username or Password ");
+	}
+}
+
+</script>
+
+</head>
+<body>
+	<center>
+		<br/>
+		<form>
+		<div id="login" method="post" >
+			
+			<br/>
+		<img src="logo.png" width="340px" height="220px" />	<br />
+		<label for="text">Username</label>
+		<input  type="text" placeholder="Username..." id="text" name="text"/><br /><br />
+		<label for="pass">Password</label>
+		<input  type="password" placeholder="Password..."  id="pass" name="pass"/><br /><br />
+		<input type="submit" id="lgbutton" value="Login" onclick="javascript:validate(this.form)"/><br />
+	</div>
+		</form>
+		
+
+	</center>
+</body>
+</html>
